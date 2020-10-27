@@ -3,7 +3,7 @@
 Tasks taken from [here](http://aperiodic.net/phil/scala/s-99/) and slightly modified.
 
 ## P10 (*) Run-length encoding of a list.
-Implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as tuples {N, E} where N is the number of duplicates of element E.
+Implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as tuples {E, N} where N is the number of duplicates of element E.
 
 ### Example:
 
@@ -13,7 +13,7 @@ Implement the so-called run-length encoding data compression method. Consecutive
 ```
 
 ## P11 (*) Modified run-length encoding.
-Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as {N, E} terms.
+Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as {E, N} terms.
 
 ### Example:
 
@@ -37,7 +37,7 @@ Given a run-length code list generated as specified in problem P10, construct it
 ### Example:
 
 ```erlang
-> duplicate(List(a, b, c, c, d))
+> duplicate([a, b, c, c, d])
 [a, a, b, b, c, c, c, c, d, d]
 ```
 
