@@ -26,8 +26,12 @@ Erlang integers do not overflow. [see](http://erlang.org/doc/efficiency_guide/ad
 31
 6> 576460752303423488 * 576460752303423488.
 332306998946228968225951765070086144
-7>
+7> 2#1100_1010_0011.
+3235
+8> 10_000_000.
+10000000
 ```
+Underscores are allowed in numbers since OTP 23 [see](http://erlang.org/eeps/eep-0051.md).
 
 ### Float
 
