@@ -3,6 +3,8 @@
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
+-import(live_coding_one, [list_primesin_range/2]).
+
 one_is_odd_test() ->
     ?assert(live_coding_one:is_odd(1)).
 
@@ -60,3 +62,14 @@ duplicate_test() ->
     ?assert([] == live_coding_one:duplicate([])),
     ?assertEqual([1, 1], live_coding_one:duplicate([1])),
     ?assertEqual([1, 1, a, a], live_coding_one:duplicate([1, a])).
+
+list_primesin_range_test() ->
+    Expected = [7, 11, 13, 17, 19, 23, 29, 31],
+    Actual = list_primesin_range(7, 31),
+    ?assertEqual(Expected, Actual).
+
+list_primesin_range_small_test() ->
+    Expected = [2, 3, 5, 7, 11, 13],
+    Actual = list_primesin_range(1, 14),
+    ?assertEqual(Expected, Actual).
+

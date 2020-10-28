@@ -8,12 +8,15 @@
 ]).
 
 -export([
-    duplicate/1
+    duplicate/1,
+    list_primesin_range/2
 ]).
 
 is_odd(Number) ->
     Number rem 2 == 1.
 
+is_prime(0) -> false;
+is_prime(1) -> false;
 is_prime(2) -> true;
 is_prime(3) -> true;
 is_prime(4) -> false;
@@ -44,3 +47,7 @@ duplicate([]) -> [];
 duplicate([H | T]) ->
     [H, H | duplicate(T)].
 
+list_primesin_range(From, To) ->
+    IntsFromRange = lists:seq(From, To),
+    % lists:filter(fun is_prime/1, IntsFromRange).
+    lists:filter(fun(Int) -> is_prime(Int) end, IntsFromRange).
