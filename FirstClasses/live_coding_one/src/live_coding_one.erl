@@ -3,7 +3,9 @@
 -export([
     is_odd/1,
     is_prime/1,
-    gcd/2]).
+    gcd/2,
+    are_coprime/2
+]).
 
 is_odd(Number) ->
     Number rem 2 == 1.
@@ -26,3 +28,11 @@ is_prime(Number, [PossibleDivider | RemainingDividers]) ->
 
 gcd(A, 0) -> A;
 gcd(A, B) -> gcd(B, A rem B).
+
+are_coprime(A, B) ->
+    % case gcd(A, B) of
+    %     1 -> true;
+    %     _ -> false
+    % end.
+    gcd(A, B) == 1.
+

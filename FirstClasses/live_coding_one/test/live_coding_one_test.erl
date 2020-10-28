@@ -51,3 +51,8 @@ gcd_test() ->
     ?assertEqual(2, live_coding_one:gcd(2, 4)),
     ?assertEqual(2, live_coding_one:gcd(6, 4)),
     ?assertEqual(1, live_coding_one:gcd(12, 11)).
+
+are_coprime_test() ->
+    ?assert(not live_coding_one:are_coprime(65, 35)),
+    ?assert(live_coding_one:are_coprime(64, 35)).
+
