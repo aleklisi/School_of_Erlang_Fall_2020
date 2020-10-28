@@ -11,7 +11,8 @@
     duplicate/1,
     list_primesin_range/2,
     encode/1,
-    encode_modified/1
+    encode_modified/1,
+    decode/1
 ]).
 
 is_odd(Number) ->
@@ -73,3 +74,7 @@ encode_modified(Keys) ->
         ({Elem, 1}) -> Elem;
         (Tuple) -> Tuple
     end, Encoded).
+
+decode(Lst) ->
+    DeepList = lists:map(fun({Elem, Count}) -> lists:duplicate(Count, Elem) end, Lst),
+    lists:flatten(DeepList).

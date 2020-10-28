@@ -92,3 +92,7 @@ encode_modified_test() ->
     Expected = [{a, 4}, b, {c, 2}, {a, 2}, d, {e, 4}],
     ?assertEqual(Expected, Actual).
 
+decode_test() ->
+    Actual = live_coding_one:decode([{a, 4}, {b, 1}, {c, 2}, {a, 2}, {d, 1}, {e, 4}]),
+    Expected = [a, a, a, a, b, c, c, a, a, d, e, e, e, e],
+    ?assertEqual(Expected, Actual).
