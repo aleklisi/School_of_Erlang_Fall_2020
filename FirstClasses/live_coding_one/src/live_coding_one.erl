@@ -1,6 +1,9 @@
 -module(live_coding_one).
 
--export([is_odd/1, is_prime/1]).
+-export([
+    is_odd/1,
+    is_prime/1,
+    gcd/2]).
 
 is_odd(Number) ->
     Number rem 2 == 1.
@@ -21,3 +24,5 @@ is_prime(Number, [PossibleDivider | RemainingDividers]) ->
         _ -> is_prime(Number, RemainingDividers)
     end.
 
+gcd(A, 0) -> A;
+gcd(A, B) -> gcd(B, A rem B).
