@@ -73,3 +73,22 @@ list_primesin_range_small_test() ->
     Actual = list_primesin_range(1, 14),
     ?assertEqual(Expected, Actual).
 
+encode_run_len_empty_list_test() ->
+    ?assertEqual([], live_coding_one:encode([])).
+
+encode_run_len_one_element_list_test() ->
+    ?assertEqual([{a, 1}], live_coding_one:encode([a])),
+    ?assertEqual([{a, 2}], live_coding_one:encode([a, a])),
+    ?assertEqual([{a, 1}, {b, 1}], live_coding_one:encode([a, b])),
+    ?assertEqual([{a, 1}, {b, 1}], live_coding_one:encode([a, b])).
+
+encode_run_len_test() ->
+    Expected = [{a, 4}, {b, 1}, {c, 2}, {a, 2}, {d, 1}, {e, 4}],
+    Actual = live_coding_one:encode([a, a, a, a, b, c, c, a, a, d, e, e, e, e]),
+    ?assertEqual(Expected, Actual).
+
+encode_modified_test() ->
+    Actual = live_coding_one:encode_modified([a, a, a, a, b, c, c, a, a, d, e, e, e, e]),
+    Expected = [{a, 4}, b, {c, 2}, {a, 2}, d, {e, 4}],
+    ?assertEqual(Expected, Actual).
+

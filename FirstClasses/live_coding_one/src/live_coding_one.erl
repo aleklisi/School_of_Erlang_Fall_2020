@@ -9,7 +9,9 @@
 
 -export([
     duplicate/1,
-    list_primesin_range/2
+    list_primesin_range/2,
+    encode/1,
+    encode_modified/1
 ]).
 
 is_odd(Number) ->
@@ -51,3 +53,23 @@ list_primesin_range(From, To) ->
     IntsFromRange = lists:seq(From, To),
     % lists:filter(fun is_prime/1, IntsFromRange).
     lists:filter(fun(Int) -> is_prime(Int) end, IntsFromRange).
+
+encode([]) -> [];
+encode([Key | Keys]) ->
+    {LastElem, LastCont, OhterCounts} = lists:foldl(
+        fun(Elem, {Elem, Count, Lst}) ->
+                {Elem, Count + 1, Lst};
+            (NewElem, {CurrElem, Count, Lst}) ->
+                {NewElem, 1, [{CurrElem, Count} | Lst]}
+            end,
+        {Key, 1, []},
+        Keys
+    ),
+    lists:reverse([{LastElem, LastCont} | OhterCounts]).
+
+encode_modified(Keys) ->
+    Encoded = encode(Keys),
+    lists:map(fun
+        ({Elem, 1}) -> Elem;
+        (Tuple) -> Tuple
+    end, Encoded).
