@@ -56,3 +56,7 @@ are_coprime_test() ->
     ?assert(not live_coding_one:are_coprime(65, 35)),
     ?assert(live_coding_one:are_coprime(64, 35)).
 
+duplicate_test() ->
+    ?assert([] == live_coding_one:duplicate([])),
+    ?assertEqual([1, 1], live_coding_one:duplicate([1])),
+    ?assertEqual([1, 1, a, a], live_coding_one:duplicate([1, a])).

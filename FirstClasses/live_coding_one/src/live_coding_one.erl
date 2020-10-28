@@ -7,6 +7,10 @@
     are_coprime/2
 ]).
 
+-export([
+    duplicate/1
+]).
+
 is_odd(Number) ->
     Number rem 2 == 1.
 
@@ -35,4 +39,8 @@ are_coprime(A, B) ->
     %     _ -> false
     % end.
     gcd(A, B) == 1.
+
+duplicate([]) -> [];
+duplicate([H | T]) ->
+    [H, H | duplicate(T)].
 
