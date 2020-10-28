@@ -37,5 +37,14 @@ prop_exactly_one_odd_it_N_and_N_plus_one_pair() ->
 
 exactly_one_odd_test() ->
     ?assert(
-        proper:quickcheck(prop_exactly_one_odd_it_N_and_N_plus_one_pair(), 10000)
+        proper:quickcheck(prop_exactly_one_odd_it_N_and_N_plus_one_pair(), 1000)
     ).
+
+
+is_prime_some_numers_test() ->
+    ?assertEqual(true, live_coding_one:is_prime(2)),
+    ?assertEqual(true, live_coding_one:is_prime(3)),
+    ?assertEqual(true, live_coding_one:is_prime(5)),
+    ?assertEqual(true, live_coding_one:is_prime(7)),
+    ?assertEqual(true, live_coding_one:is_prime(11)),
+    ?assertEqual(false, live_coding_one:is_prime(4)).
