@@ -1,5 +1,13 @@
 # Second classes live coding script
 
+## Presentation
+
+to start a presentation just run (in a terminal):
+```
+$ serve
+```
+and go to http://0.0.0.0:8000/ in your browser.
+
 ## Prepared before classes material
 Let's start with creating a new nova project:
 ```
@@ -72,8 +80,3 @@ file `src/controllers/choose_user_and_date_controller.erl`
 
 ## Live coding session
 
-to start a presentation just run (in a terminal):
-```
-$ serve
-```
-and go to http://0.0.0.0:8000/ in your browser.
