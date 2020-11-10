@@ -1,5 +1,6 @@
 # Second classes live coding script
 
+## Prepared before classes material
 Let's start with creating a new nova project:
 ```
 $ rebar3 new nova hot_desking
@@ -68,3 +69,11 @@ index(#{req := #{path := <<"/all_users">>}}) ->
 
 ```
 file `src/controllers/choose_user_and_date_controller.erl`
+
+## Live coding session
+
+to start a presentation just run (in a terminal):
+```
+$ serve
+```
+and go to http://0.0.0.0:8000/ in your browser.
