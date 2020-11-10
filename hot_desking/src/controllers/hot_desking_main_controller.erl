@@ -3,5 +3,9 @@
          index/1
         ]).
 
-index(#{req := #{method := <<"GET">>}} = _NovaReq) ->
-    {ok, [{message, "Nova is running!"}]}.
+index(#{req := #{path := <<"/">>}}) ->
+    {ok, [
+        {message, "When would you like to visit the office?"},
+        {main_view, "choose_date"},
+        {qs, ""}
+    ]}.
