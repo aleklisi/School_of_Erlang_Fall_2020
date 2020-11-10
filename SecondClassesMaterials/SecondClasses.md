@@ -80,3 +80,17 @@ file `src/controllers/choose_user_and_date_controller.erl`
 
 ## Live coding session
 
+Setup a pgsql DB:
+
+```
+$ make setup_pgsql
+$ docker exec -it postgresql /bin/bash
+I have no name!@da260e1e77fb:/$ psql hot_desking postgres
+Password for user postgres:
+psql (11.9)
+Type "help" for help.
+
+hot_desking=#
+
+```
+and paste here queries from `hot_desking/setup_db_queries/pq.sql` file.
