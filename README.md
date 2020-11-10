@@ -19,6 +19,6 @@ During second classes we will learn the basics of:
 See the docs:
 [processes](http://erlang.org/doc/reference_manual/processes.html)
 [gen_server](https://erlang.org/doc/man/gen_server.html)
-[](https://erlang.org/doc/design_principles/gen_server_concepts.html)
+[gen_server concepts](https://erlang.org/doc/design_principles/gen_server_concepts.html)
 
 During the live coding session, we will implement a gen_server responsible for handling the connection to a database.
