@@ -4,8 +4,12 @@
 
 main() ->
     print_my_pid(),
-    spawn(fun print_my_pid/0),
+    GivenPid = self(),
+    spawn(fun() -> print_my_pid(), print_pid(GivenPid) end),
     print_my_pid().
 
 print_my_pid() ->
-    io:fwrite("My PID is ~p\n", [self()]).
+    print_pid(self()).
+
+print_pid(Pid) ->
+    io:fwrite("~p is printing ~p\n", [self(), Pid]).
