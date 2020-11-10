@@ -71,6 +71,18 @@ Process _A_ is **NOT** terminated.
 [Read more in the docs](http://erlang.org/doc/reference_manual/processes.html#monitors)
 
 ---
+# Monitors demo
+
+```
+erl
+% compile example file
+c(example_monitor).
+
+% run
+example_monitor:main().
+```
+
+---
 # Links
 
 Two processes can be linked to each other.

@@ -15,7 +15,7 @@ receiver() ->
         3000 ->
             print("No Msg!")
     end.
-            
+
 sender(ToPid) ->
     print(ToPid),
     Msg = "Hello",
