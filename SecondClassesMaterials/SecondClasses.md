@@ -94,3 +94,22 @@ hot_desking=#
 
 ```
 and paste here queries from `hot_desking/setup_db_queries/pq.sql` file.
+
+Go to [epgsql](https://github.com/epgsql/epgsql) a library.
+Add it to the dependencies in file `hot_desking/rebar.config`
+and add `{epgsql, "4.4.0"}` to deps list.
+
+Create a new file and `hot_desking/src/backends/pgsql_backend.erl`
+
+Use a template to generate gen_server calls.
+
+Implement getting all users.
+
+Implement a common test example suite.
+
+Create walls table and desks table reflecting your office map:
+Wall { begin_x: int, begin_y: int, end_x: int, end_y: int }
+Desk { id, x: int, y: int}
+
+Create a table to ave reservations:
+Reservation {user_id, desk_id, date}
