@@ -1,3 +1,5 @@
+%% See this as an inspiration https://github.com/spawnfest/eneo4j/blob/master/src/eneo4j_worker.erl
+
 -module(pgsql_backend).
 
 -behaviour(gen_server).
