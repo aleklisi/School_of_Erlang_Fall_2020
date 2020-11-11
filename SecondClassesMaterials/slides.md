@@ -17,6 +17,8 @@ School of Erlang
 
  - the [scheduling](https://hamidreza-s.github.io/erlang/scheduling/real-tiis/preemptive/migration/2016/02/09/erlang-scheduler-details.html) overhead is low
 
+
+
 ---
 # Data handling
 
@@ -26,7 +28,7 @@ When one process passes data to the other one, data is copied between them.
 
 Each process has its memory and its stack.
 
-Several optimizations are applied inside BEAM.
+Several [optimizations](https://en.wikipedia.org/wiki/Persistent_data_structure) are applied inside BEAM.
 
 Be careful about [big binaries and possible memory leaks](https://dieswaytoofast.blogspot.com/2012/12/erlang-binaries-and-garbage-collection.html).
 
@@ -128,12 +130,14 @@ where `Destination` is a PID or name of a process.
 You can also use [erlang:send/2,3](http://erlang.org/doc/man/erlang.html#send-2) or
 [erlang:send_after/3,4](http://erlang.org/doc/man/erlang.html#send_after-3).
 
+The message will [eventually](https://youtu.be/IP-rGJKSZ3s) be delivered.
+
 [Read more in the docs](http://erlang.org/doc/reference_manual/expressions.html#send)
 
 ---
 # Receiving messages
 
-Each process has its message queue.
+Each process has a   message queue.
 If you do not match on a specific pattern it works as FIFO.
 
 ```
@@ -199,58 +203,13 @@ They are very much like interfaces in OOP.
 
 Examples are:
 
-- [application](http://erlang.org/doc/design_principles/applications.html#callback_module)
+- [gen_event](https://erlang.org/doc/man/gen_event.html)
 
-- [supervisor](http://erlang.org/doc/design_principles/sup_princ.html)
+- [gen_statem](https://erlang.org/doc/man/gen_statem.html)
 
 - [gen_server](http://erlang.org/doc/design_principles/gen_server_concepts.html)
 
 [Read more in the docs](http://erlang.org/doc/design_principles/des_princ.html#behaviours)
-
----
-# How to implement a behavior - Example
-
-```
--module(my_app).
--behavior(application).
-
--export([start/2, stop/1]).
-
-start(_Type, _Args) ->
-    my_sup:start_link().
-
-stop(_State) ->
-    ok.
-```
-
----
-# Application structure
-
-```
-                  my_app
-                    |
-                    |
-                   \/
-                my_sup
-                /    \
-               /      \
-              \/      \/
-        another_sup   worker3
-        /      \  
-       /        \
-      \/        \/
-    worker1   worker2
-```
-where:
-
-| node | behavior | 
-|:---:|:---:|
-| my_app | application |
-| my_sup | supervisor |
-| another_sup | supervisor |
-| worker1 | gen_server |
-| worker2 | gen_server |
-| worker3 | gen_server |
 
 ---
 # gen_server
@@ -264,19 +223,8 @@ where:
 [gen_server docs](http://erlang.org/doc/man/gen_server.html)
 
 ---
-### Observer
-
-A GUI tool for observing an Erlang system.
-
-**Live demo**
-
-```
-rebar3 shell
-observer:start().
-```
----
 # Read more:
- 
+
  - [Processes](http://erlang.org/doc/efficiency_guide/processes.html)
 
  - [Concurrent Programming](http://erlang.org/doc/getting_started/conc_prog.html)
