@@ -6,6 +6,6 @@ CREATE TABLE users (
 
 INSERT INTO users
     VALUES
-    (1, 'Aleksander'),
-    (2, 'Morty'),
-    (3, 'Rick');
+    (1, 'Huey');
+    (2, 'Dewey');
+    (3, 'Louie');
