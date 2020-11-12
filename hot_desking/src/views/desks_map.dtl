@@ -1,0 +1,57 @@
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const desk_radius = 6;
+
+    fetch('/desks?{{query_string}}')
+        .then(response =>
+            response.json()
+        )
+        .then(desks =>
+            desks.forEach(desk => {
+                const desk_shape = new Path2D();
+                desk_shape.arc(desk.x, desk.y, desk_radius, 0, 2 * Math.PI);
+                ctx.fillStyle = desk.is_taken ? "red" : "green";
+                ctx.fill(desk_shape);
+                canvas.addEventListener('click', function (event) {
+                    if (ctx.isPointInPath(desk_shape, event.offsetX, event.offsetY)) {
+                        if (desk.is_taken) {
+                            const name = desk.name == "" ? "you" : desk.name
+                            window.alert(`This desk is already taken by ${name}!`);
+                        } else {
+                            // fetch(`/reserve_desk?{{query_string}}&desk_id=${desk.id}`)
+                            //     .then(response => response.json())
+                            //     .then(reservation_result => {
+                            //         if (reservation_result.is_success) {
+                            //             window.alert('Desk successfully reserved')
+                            //             desk.is_taken = true;
+                            //             ctx.fillStyle = desk.is_taken ? "red" : "green";
+                            //             ctx.fill(desk_shape);
+                            //         } else {
+                            //             window.alert(`Desk reservation failed! ${reservation_result.reason}`)
+                            //         }
+                            //     });
+
+                        }
+                    }
+                });
+            }
+            ));
+
+    fetch('/walls')
+        .then(response =>
+            response.json()
+        )
+        .then(walls =>
+            walls.forEach(wall => {
+                ctx.beginPath();
+                ctx.strokeStyle = 'black';
+                ctx.moveTo(wall.begin_x, wall.begin_y);
+                ctx.lineTo(wall.end_x, wall.end_y);
+                ctx.stroke();
+            }));
+</script>
+<div class="h-full w-screen bg-blue-100 h-4">
+    <canvas id="canvas" width="{{canvas_width}}" height="{{canvas_height}}" />
+</div>
