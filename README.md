@@ -5,26 +5,20 @@ Their purpose is to allow somebody with limited programming experience to enter 
 
 ## First classes
 
-### Presentation
+Everything about the first classes can be found on the [First_classes_solutions branch](https://github.com/aleklisi/School_of_Erlang_Fall_2020/tree/First_classes_solutions).
 
-[Presentation - data types](FirstClasses/data_types.md)
+## Second classes
 
-[Presentation - live coding tasks](FirstClasses/live_coding.md)
+For the remaining part of the classes, we will be creating a hotdesking application.
+During second classes we will learn the basics of:
+- what an Erlang process is
+- how the processes are started
+- processes links and monitors
+-
 
-### Other materials
+See the docs:
+[processes](http://erlang.org/doc/reference_manual/processes.html)
+[gen_server](https://erlang.org/doc/man/gen_server.html)
+[gen_server concepts](https://erlang.org/doc/design_principles/gen_server_concepts.html)
 
-[Presentation - syntax introduction](https://github.com/aleklisi/School-of-Erlang/blob/master/FirstClasses/how_to_code.md)
-
-[Coding 101](https://github.com/aleklisi/School-of-Erlang/tree/master/FirstClasses/CompileModule)
-
-#### Practice more
-
-[EX 1 - sum_three](https://github.com/aleklisi/School-of-Erlang/FirstClasses/sum_three/README.md)
-
-[EX 2 - average](https://github.com/aleklisi/School-of-Erlang/blob/master/FirstClasses/average/)
-
-[EX 3 - fizzbuzz](https://github.com/aleklisi/School-of-Erlang/blob/master/FirstClasses/fizzbuzz/)
-
-[EX 4 - multiples](https://github.com/aleklisi/School-of-Erlang/blob/master/FirstClasses/multiples)
-
-[EX 5 - fibonacci_sum](https://github.com/aleklisi/School-of-Erlang/blob/master/FirstClasses/FirstClasses/fibonacci_sum)
+During the live coding session, we will implement a gen_server responsible for handling the connection to a database.
