@@ -80,3 +80,23 @@ file `src/controllers/choose_user_and_date_controller.erl`
 
 ## Live coding session
 
+First, let's start a pgsql in a docker container:
+and init a database with users table:
+```
+$ make setup_pgsql
+$ docker exec -it postgresql /bin/bash
+I have no name!@e12be5b8d93b:/$ psql hot_desking postgres
+Password for user postgres:
+```
+The password is `postgres`.
+```
+hot_desking=#
+```
+Now copy and paste the content of `hot_desking/setup_db_queries/pq.sql` to the console to crate and populate users table
+
+To exit  those consoles use Ctrl + D.
+
+During the live coding we were implementing a gen server to get usernames form DB.
+
+
+
