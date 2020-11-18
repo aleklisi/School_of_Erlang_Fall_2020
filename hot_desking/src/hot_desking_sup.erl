@@ -28,10 +28,25 @@ start_link() ->
 
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
+    PgsqlParams = #{
+        host => "localhost",
+        port => 5432,
+        username => "postgres",
+        password => "postgres",
+        database => "hot_desking",
+        timeout => 4000
+    },
     Children = [
         #{
-            id => db,
-            start => {pgsql_backend, start_link, [db_worker_name]}
+            id => db_pool,
+            start =>
+                {wpool, start_pool, [
+                    db_worker_pool,
+                    [
+                        {worker, {pgsql_backend, PgsqlParams}},
+                        {workers, 5}
+                    ]
+                ]}
         }
         ],
     {ok, { {one_for_all, 0, 1}, Children} }.
