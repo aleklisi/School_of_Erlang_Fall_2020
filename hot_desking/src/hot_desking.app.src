@@ -9,7 +9,8 @@
    [
     kernel,
     stdlib,
-    nova
+    nova,
+    worker_pool
    ]},
   {env,[]},
   {modules, []},
