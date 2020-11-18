@@ -28,12 +28,13 @@ start_link() ->
 
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
+    % https://erlang.org/doc/man/os.html#getenv-1
     PgsqlParams = #{
-        host => "localhost",
-        port => 5432,
-        username => "postgres",
-        password => "postgres",
-        database => "hot_desking",
+        host => os:getenv("POSTGRESQL_URL"),
+        port => list_to_integer(os:getenv("POSTGRESQL_PORT")),
+        username => os:getenv("POSTGRESQL_USERNAME"),
+        password => os:getenv("POSTGRESQL_PASSWORD"),
+        database => os:getenv("POSTGRESQL_DATABASE"),
         timeout => 4000
     },
     Children = [
