@@ -28,7 +28,13 @@ start_link() ->
 
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
-    {ok, { {one_for_all, 0, 1}, []} }.
+    Children = [
+        #{
+            id => db,
+            start => {pgsql_backend, start_link, [db_worker_name]}
+        }
+        ],
+    {ok, { {one_for_all, 0, 1}, Children} }.
 
 %%====================================================================
 %% Internal functions
