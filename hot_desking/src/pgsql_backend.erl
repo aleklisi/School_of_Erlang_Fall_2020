@@ -11,23 +11,16 @@
     ]).
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2]).
 
-start_link(Name) ->
-    gen_server:start_link({local, Name}, ?MODULE, [], []).
+start_link(Args) ->
+    gen_server:start_link(?MODULE, Args, []).
 
 get_all_users() ->
-    gen_server:call(db_worker_name, get_all_users).
+    wpool:call(db_worker_pool, get_all_users).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-init(_Args) ->
-    {ok, Conn} = epgsql:connect(#{
-        host => "localhost",
-        port => 5432,
-        username => "postgres",
-        password => "postgres",
-        database => "hot_desking",
-        timeout => 4000
-    }),
+init(Args) ->
+    {ok, Conn} = epgsql:connect(Args),
     {ok, #{conn => Conn}}.
 
 handle_call(get_all_users, _From, State = #{conn := Conn}) ->
