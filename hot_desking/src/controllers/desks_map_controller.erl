@@ -56,5 +56,3 @@ get_walls() ->
       , #{ begin_x => 60, begin_y => 60, end_x => 60, end_y => 0 }
       , #{ begin_x => 60, begin_y => 0, end_x => 0, end_y => 0 }
     ].
-
-
