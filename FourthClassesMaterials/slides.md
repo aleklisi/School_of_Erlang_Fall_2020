@@ -120,9 +120,21 @@ They are not interchangeable. Sometimes both see the error sometimes only one of
 
 # Common test
 Live example
+
 ---
 # Erlang tracing
 
  - https://github.com/chrzaszcz/erlang_doctor
  - https://github.com/ferd/recon
  - https://erlang.org/doc/man/dbg.html
+
+`dbg:tracer(process, {fun dbg:dhandler/2, standard_io}).` vs `dbg:tracer().`
+
+---
+# Distributed Erlang
+
+[See the docs](https://erlang.org/doc/reference_manual/distributed.html)
+
+Application [failover](https://erlang.org/doc/design_principles/distributed_applications.html#failover) and [takeover](https://erlang.org/doc/design_principles/distributed_applications.html#takeover)
+
+C Node does not have to be written in C. It may be written in eg [Python](https://github.com/Pyrlang/Pyrlang).
